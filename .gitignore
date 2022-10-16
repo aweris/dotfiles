@@ -1,0 +1,5 @@
+# Jetbrains
+.idea/
+
+# Local / Private information (not shared with the public)
+git/gitconfig.local.symlink
