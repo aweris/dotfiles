@@ -7,7 +7,7 @@ Personal dotfiles for my Arch Linux setup.
 ```bash
 git clone https://github.com/aweris/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-source scripts/bootstrap.sh
+scripts/bootstrap.sh
 ```
 
 ## References
