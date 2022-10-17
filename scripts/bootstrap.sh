@@ -42,10 +42,12 @@ setup_gitconfig() {
   git_credential='cache'
 
   user ' - What is your github author name?'
-  read -e -r git_authorname
+  # shellcheck disable=SC2162
+  read -e git_authorname
 
   user ' - What is your github author email?'
-  read -e -r git_authoremail
+  # shellcheck disable=SC2162
+  read -e git_authoremail
 
   sed -e "s/AUTHORNAME/$git_authorname/g" \
     -e "s/AUTHOREMAIL/$git_authoremail/g" \
@@ -78,7 +80,8 @@ link_file() {
         # Ask user for action if the destination already exists
         user "File already exists: ${dst} ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n -r 1 action
+        # shellcheck disable=SC2162
+        read -n 1 action
 
         case "$action" in
         o)
