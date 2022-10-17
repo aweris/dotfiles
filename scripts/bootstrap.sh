@@ -2,11 +2,11 @@
 
 set -e
 
+# Directory of this script
 readonly SCRIPTS_DIR=$(dirname "$0")
-readonly DOTFILES_ROOT="$(
-  builtin cd "${SCRIPTS_DIR}/.."
-  pwd -P
-)" # Fully resolved path to the root of the dotfiles repo
+
+# Fully resolved path to the root of the dotfiles repo
+readonly DOTFILES_ROOT="$(builtin cd "${SCRIPTS_DIR}/.."; pwd -P)"
 
 # Prints a info message
 info() {
