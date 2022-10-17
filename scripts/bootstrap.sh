@@ -151,10 +151,26 @@ install_dotfiles() {
   done
 }
 
+# Symlinks all files in DOTFILES_ROOT/<topic-name>/*.symlink.xdg.config to $HOME/.config/ directory
+install_xdg_configs() {
+  info 'installing xdg configs'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  symlink_files=$(find -H "${DOTFILES_ROOT}" -maxdepth 2 -name '*.symlink.xdg.config' -not -path '*.git*')
+
+  # Recursively find all files in the DOTFILES_ROOT directory that end with .symlink
+  for src in ${symlink_files}; do
+    dst="$HOME/.config/$(basename "${src%.*.*.*}")"
+    link_file "$src" "$dst"
+  done
+}
+
 # Main run function
 run_cmd() {
   setup_gitconfig
   install_dotfiles
+  install_xdg_configs
   echo '  All installed!'
 }
 
